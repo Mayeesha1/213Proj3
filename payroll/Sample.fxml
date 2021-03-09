@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Employee Management">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="470.0">
+                     <children>
+                        <RadioButton layoutX="143.0" layoutY="78.0" mnemonicParsing="false" text="CS" />
+                        <RadioButton layoutX="230.0" layoutY="78.0" mnemonicParsing="false" text="IT" />
+                        <RadioButton layoutX="310.0" layoutY="78.0" mnemonicParsing="false" text="ECE" />
+                        <Text layoutX="18.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.803401947021484" />
+                        <Text layoutX="18.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" />
+                        <TextField layoutX="107.0" layoutY="14.0" prefHeight="25.0" prefWidth="245.0" />
+                        <Text layoutX="7.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Hired" />
+                        <TextField layoutX="107.0" layoutY="132.0" prefHeight="25.0" prefWidth="251.0" />
+                        <RadioButton layoutX="47.0" layoutY="188.0" mnemonicParsing="false" text="Full Time" />
+                        <RadioButton layoutX="178.0" layoutY="188.0" mnemonicParsing="false" text="Part Time" />
+                        <RadioButton layoutX="312.0" layoutY="188.0" mnemonicParsing="false" text="Management" />
+                        <Text layoutX="71.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Annual Salary" />
+                        <TextField layoutX="200.0" layoutY="227.0" prefHeight="25.0" prefWidth="219.0" />
+                        <Text layoutX="69.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours Worked" />
+                        <TextField layoutX="199.0" layoutY="287.0" prefHeight="25.0" prefWidth="71.0" />
+                        <Text layoutX="299.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate" />
+                        <TextField layoutX="345.0" layoutY="287.0" prefHeight="25.0" prefWidth="75.0" />
+                        <RadioButton layoutX="50.0" layoutY="346.0" mnemonicParsing="false" text="Manager" />
+                        <RadioButton layoutX="171.0" layoutY="346.0" mnemonicParsing="false" text="Department Head" />
+                        <RadioButton layoutX="365.0" layoutY="346.0" mnemonicParsing="false" text="Director" />
+                        <Button layoutX="28.0" layoutY="439.0" mnemonicParsing="false" text="Clear" />
+                        <Button layoutX="107.0" layoutY="439.0" mnemonicParsing="false" text="Add Employee" />
+                        <Button layoutX="266.0" layoutY="439.0" mnemonicParsing="false" text="Remove Employee" />
+                        <Button layoutX="458.0" layoutY="439.0" mnemonicParsing="false" text="Set Hours" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Employee Database">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
