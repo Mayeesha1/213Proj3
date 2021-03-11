@@ -48,7 +48,7 @@ public class SampleController {
     private TextArea messageArea2;
     
     @FXML
-    private ToggleGroup dep, empType;
+    private ToggleGroup dep, empType, mgmtType;
     
     @FXML
     /**
@@ -73,9 +73,32 @@ public class SampleController {
 				Fulltime fulltime = new Fulltime(profile, annSalary);
         		company.add(fulltime);
 
+    		} else if (employeeType.contentEquals("Management")) {
+    			String annualSal = annSal.getText();
+				double annSalary = Double.parseDouble(annualSal);
+	    		RadioButton selectMgmt = (RadioButton) mgmtType.getSelectedToggle();
+	    		String mgmtRole = selectMgmt.getText();
+	    		
+	    		 if(mgmtRole.contentEquals("Manager")) {
+	    			Management management = new Management(profile, annSalary, mgmtRole);
+					management.setRole("Manager");
+					company.add(management);
+				
+	    		}else if(mgmtRole.contentEquals("Department Head")) {
+					Management management = new Management(profile, annSalary, mgmtRole);
+					management.setRole("Department Head");
+					company.add(management);
+					
+	    		}else if(mgmtRole.contentEquals("Director")) {
+					Management management = new Management(profile, annSalary, mgmtRole);
+					management.setRole("Director");
+					company.add(management);
+					messageArea1.appendText("Employee added!");
+	    		}
+	    		
+    		} else if (employeeType.contentEquals("Parttime")) {
+			
     		}
-			messageArea1.appendText("Employee added!");
-    		
     	}
     	//Show the error message with a pop-up window.
     	catch (Exception e) {
