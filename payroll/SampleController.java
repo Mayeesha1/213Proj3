@@ -64,23 +64,25 @@ public class SampleController {
     	//try {
 		String emp = name.getText();
 		//String date = dateHired.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-
-		System.out.println();
+		String[] dateSplit = dateHired.getValue().toString().split("-");
+        String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
+        
+        
     	if(FullTimeID.isSelected()) {
     		String annualSal = annSal.getText();
 			double annSalary = Double.parseDouble(annualSal);
     		  if(csID.isSelected()) {
-    			 Profile profile = new Profile(emp, "CS", "06/16/2000");
+    			 Profile profile = new Profile(emp, "CS", formattedDate);
     			 Fulltime fulltime = new Fulltime(profile, annSalary);
     		     company.add(fulltime);
 			     messageArea1.appendText("Employee added!\n");
     		} else if(itID.isSelected()) {
-        		Profile profile = new Profile(emp, "IT", "06/16/2000");
+        		Profile profile = new Profile(emp, "IT", formattedDate);
         		Fulltime fulltime = new Fulltime(profile, annSalary);
         		company.add(fulltime);
     			messageArea1.appendText("Employee added!\n");
     		} else if(eceID.isSelected()) {
-        		Profile profile = new Profile(emp, "ECE", "06/16/2000");
+        		Profile profile = new Profile(emp, "ECE", formattedDate);
         		Fulltime fulltime = new Fulltime(profile, annSalary);
         		company.add(fulltime);
     			messageArea1.appendText("Employee added!\n");
@@ -91,19 +93,19 @@ public class SampleController {
 			double annSalary = Double.parseDouble(annualSal);
     		if(managerID.isSelected()) {
     		   if(csID.isSelected()) {
-    					Profile profile = new Profile(emp, "CS", "06/16/2000");
+    					Profile profile = new Profile(emp, "CS", formattedDate);
     					Management management = new Management(profile, annSalary, "Manager");
     					management.setRole("Manager");
     					company.add(management);
     					messageArea1.appendText("Employee added!\n");
     	    		} else if(itID.isSelected()) {
-    	        		Profile profile = new Profile(emp, "IT", "06/16/2000");
+    	        		Profile profile = new Profile(emp, "IT", formattedDate);
     	        		Management management = new Management(profile, annSalary, "Manager");
         				management.setRole("Manager");
         				company.add(management);
         				messageArea1.appendText("Employee added!\n");
     	    		} else if(eceID.isSelected()) {
-    	        		Profile profile = new Profile(emp, "ECE", "06/16/2000");
+    	        		Profile profile = new Profile(emp, "ECE", formattedDate);
     	        		Management management = new Management(profile, annSalary, "Manager");
         				management.setRole("Manager");
         				company.add(management);
@@ -111,19 +113,19 @@ public class SampleController {
     	    		}
     		} else if (depheadID.isSelected()) {
     				  if(csID.isSelected()) {
-    					Profile profile = new Profile(emp, "CS", "06/16/2000");
+    					Profile profile = new Profile(emp, "CS", formattedDate);
     					Management management = new Management(profile, annSalary, "Department Head");
     					management.setRole("Department Head");
     					company.add(management);
     					messageArea1.appendText("Employee added!\n");
     	    		} else if(itID.isSelected()) {
-    	        		Profile profile = new Profile(emp, "IT", "06/16/2000");
+    	        		Profile profile = new Profile(emp, "IT", formattedDate);
     	        		Management management = new Management(profile, annSalary, "Department Head");
         				management.setRole("Department Head");
         				company.add(management);
         				messageArea1.appendText("Employee added!\n");
     	    		} else if(eceID.isSelected()) {
-    	        		Profile profile = new Profile(emp, "ECE", "06/16/2000");
+    	        		Profile profile = new Profile(emp, "ECE", formattedDate);
     	        		Management management = new Management(profile, annSalary, "Department Head");
         				management.setRole("Department Head");
         				company.add(management);
@@ -131,19 +133,19 @@ public class SampleController {
     	    		}
     		} else if (directorID.isSelected()) {
     			    if(csID.isSelected()) {
-    			       Profile profile = new Profile(emp, "CS", "06/16/2000");
+    			       Profile profile = new Profile(emp, "CS", formattedDate);
     			       Management management = new Management(profile, annSalary, "Director");
  					   management.setRole("Director");
  					   company.add(management);
    			           messageArea1.appendText("Employee added!\n");
  	    		  } else if(itID.isSelected()) {
- 	        		   Profile profile = new Profile(emp, "IT", "06/16/2000");
+ 	        		   Profile profile = new Profile(emp, "IT", formattedDate);
  	        		   Management management = new Management(profile, annSalary, "Director");
      				   management.setRole("Director");
      				   company.add(management);
    			           messageArea1.appendText("Employee added!\n");
  	    		 } else if(eceID.isSelected()) {
- 	        		   Profile profile = new Profile(emp, "ECE", "06/16/2000");
+ 	        		   Profile profile = new Profile(emp, "ECE", formattedDate);
  	        		   Management management = new Management(profile, annSalary, "Director");
      				   management.setRole("Director");
      				   company.add(management);
@@ -154,23 +156,23 @@ public class SampleController {
     		String hrRate = rate.getText();
 			double hrlyRate = Double.parseDouble(hrRate);
     		 if(csID.isSelected()) {
-    			 Profile profile = new Profile(emp, "CS", "06/16/2000");
+    			 Profile profile = new Profile(emp, "CS", formattedDate);
     			 Parttime parttime = new Parttime(profile, hrlyRate);
     		     company.add(parttime);
 			     messageArea1.appendText("Employee added!\n");
     		} else if(itID.isSelected()) {
-        		Profile profile = new Profile(emp, "IT", "06/16/2000");
+        		Profile profile = new Profile(emp, "IT", formattedDate);
         		Parttime parttime = new Parttime(profile, hrlyRate);
    		        company.add(parttime);
 			    messageArea1.appendText("Employee added!\n");
     		} else if(eceID.isSelected()) {
-        		Profile profile = new Profile(emp, "ECE", "06/16/2000");
+        		Profile profile = new Profile(emp, "ECE", formattedDate);
         		Parttime parttime = new Parttime(profile, hrlyRate);
    		        company.add(parttime);
 			    messageArea1.appendText("Employee added!\n");
     		}
-    	}
-    
+    	  }
+        
 
     		
     		
