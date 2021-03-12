@@ -13,7 +13,7 @@ import javafx.scene.control.ToggleGroup;
 
 public class SampleController {
 	Company company = new Company();
-	private String depart;
+	
     @FXML
     private TextField name;
 
@@ -28,7 +28,7 @@ public class SampleController {
 
     @FXML
     private TextField rate;
-
+    
     @FXML
     private Button clearButton;
 
@@ -51,7 +51,8 @@ public class SampleController {
     private ToggleGroup dep, empType, mgmtType;
     
     @FXML
-    private RadioButton csID, itID, eceID, FullTimeID, PartTimeID, ManagementID;
+    private RadioButton csID, itID, eceID, FullTimeID, PartTimeID, ManagementID, 
+    						managerID, depheadID, directorID;
     
     @FXML
     /**
@@ -65,57 +66,114 @@ public class SampleController {
 		//String date = dateHired.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 
 		System.out.println();
-    	if(csID.isSelected()) {
-    		Profile profile = new Profile(emp, "CS", "06/16/2000");
-    		
-    		
-    	}
-    		//RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
-    		//String dept = selectDep.getText();
-    		//System.out.println(dept);
-		    Profile profile = new Profile(emp, "CS", "06/16/2000");
-
-
-
-    		
-    		//Employee employee = new Employee(profile);
-    		
-    		//RadioButton selectEmp = (RadioButton) empType.getSelectedToggle();
-    		String employeeType = "Full Time";/*selectEmp.getText();*/
-    		if(employeeType.equals("Full Time")) {
-    	    	System.out.println("IM IN FULLTIME");
-    			String annualSal = annSal.getText();
-				double annSalary = Double.parseDouble(annualSal);
-				Fulltime fulltime = new Fulltime(profile, annSalary);
+    	if(FullTimeID.isSelected()) {
+    		String annualSal = annSal.getText();
+			double annSalary = Double.parseDouble(annualSal);
+    		  if(csID.isSelected()) {
+    			 Profile profile = new Profile(emp, "CS", "06/16/2000");
+    			 Fulltime fulltime = new Fulltime(profile, annSalary);
+    		     company.add(fulltime);
+			     messageArea1.appendText("Employee added!\n");
+    		} else if(itID.isSelected()) {
+        		Profile profile = new Profile(emp, "IT", "06/16/2000");
+        		Fulltime fulltime = new Fulltime(profile, annSalary);
         		company.add(fulltime);
-				messageArea1.appendText("Employee added!");
-
-    		} else if (employeeType.contentEquals("Management")) {
-    			String annualSal = annSal.getText();
-				double annSalary = Double.parseDouble(annualSal);
-	    		RadioButton selectMgmt = (RadioButton) mgmtType.getSelectedToggle();
-	    		String mgmtRole = selectMgmt.getText();
-	    		
-	    		 if(mgmtRole.contentEquals("Manager")) {
-	    			Management management = new Management(profile, annSalary, mgmtRole);
-					management.setRole("Manager");
-					company.add(management);
-				
-	    		}else if(mgmtRole.contentEquals("Department Head")) {
-					Management management = new Management(profile, annSalary, mgmtRole);
-					management.setRole("Department Head");
-					company.add(management);
-					
-	    		}else if(mgmtRole.contentEquals("Director")) {
-					Management management = new Management(profile, annSalary, mgmtRole);
-					management.setRole("Director");
-					company.add(management);
-					messageArea1.appendText("Employee added!");
-	    		}
-	    		
-    		} else if (employeeType.contentEquals("Parttime")) {
-			
+    			messageArea1.appendText("Employee added!\n");
+    		} else if(eceID.isSelected()) {
+        		Profile profile = new Profile(emp, "ECE", "06/16/2000");
+        		Fulltime fulltime = new Fulltime(profile, annSalary);
+        		company.add(fulltime);
+    			messageArea1.appendText("Employee added!\n");
     		}
+    		
+    	} else if(ManagementID.isSelected()) {
+    		String annualSal = annSal.getText();
+			double annSalary = Double.parseDouble(annualSal);
+    		if(managerID.isSelected()) {
+    		   if(csID.isSelected()) {
+    					Profile profile = new Profile(emp, "CS", "06/16/2000");
+    					Management management = new Management(profile, annSalary, "Manager");
+    					management.setRole("Manager");
+    					company.add(management);
+    					messageArea1.appendText("Employee added!\n");
+    	    		} else if(itID.isSelected()) {
+    	        		Profile profile = new Profile(emp, "IT", "06/16/2000");
+    	        		Management management = new Management(profile, annSalary, "Manager");
+        				management.setRole("Manager");
+        				company.add(management);
+        				messageArea1.appendText("Employee added!\n");
+    	    		} else if(eceID.isSelected()) {
+    	        		Profile profile = new Profile(emp, "ECE", "06/16/2000");
+    	        		Management management = new Management(profile, annSalary, "Manager");
+        				management.setRole("Manager");
+        				company.add(management);
+        				messageArea1.appendText("Employee added!\n");
+    	    		}
+    		} else if (depheadID.isSelected()) {
+    				  if(csID.isSelected()) {
+    					Profile profile = new Profile(emp, "CS", "06/16/2000");
+    					Management management = new Management(profile, annSalary, "Department Head");
+    					management.setRole("Department Head");
+    					company.add(management);
+    					messageArea1.appendText("Employee added!\n");
+    	    		} else if(itID.isSelected()) {
+    	        		Profile profile = new Profile(emp, "IT", "06/16/2000");
+    	        		Management management = new Management(profile, annSalary, "Department Head");
+        				management.setRole("Department Head");
+        				company.add(management);
+        				messageArea1.appendText("Employee added!\n");
+    	    		} else if(eceID.isSelected()) {
+    	        		Profile profile = new Profile(emp, "ECE", "06/16/2000");
+    	        		Management management = new Management(profile, annSalary, "Department Head");
+        				management.setRole("Department Head");
+        				company.add(management);
+    			        messageArea1.appendText("Employee added!\n");
+    	    		}
+    		} else if (directorID.isSelected()) {
+    			    if(csID.isSelected()) {
+    			       Profile profile = new Profile(emp, "CS", "06/16/2000");
+    			       Management management = new Management(profile, annSalary, "Director");
+ 					   management.setRole("Director");
+ 					   company.add(management);
+   			           messageArea1.appendText("Employee added!\n");
+ 	    		  } else if(itID.isSelected()) {
+ 	        		   Profile profile = new Profile(emp, "IT", "06/16/2000");
+ 	        		   Management management = new Management(profile, annSalary, "Director");
+     				   management.setRole("Director");
+     				   company.add(management);
+   			           messageArea1.appendText("Employee added!\n");
+ 	    		 } else if(eceID.isSelected()) {
+ 	        		   Profile profile = new Profile(emp, "ECE", "06/16/2000");
+ 	        		   Management management = new Management(profile, annSalary, "Director");
+     				   management.setRole("Director");
+     				   company.add(management);
+   			           messageArea1.appendText("Employee added!\n");
+ 	    		}
+    		}
+    	} else if(PartTimeID.isSelected()){
+    		String hrRate = rate.getText();
+			double hrlyRate = Double.parseDouble(hrRate);
+    		 if(csID.isSelected()) {
+    			 Profile profile = new Profile(emp, "CS", "06/16/2000");
+    			 Parttime parttime = new Parttime(profile, hrlyRate);
+    		     company.add(parttime);
+			     messageArea1.appendText("Employee added!\n");
+    		} else if(itID.isSelected()) {
+        		Profile profile = new Profile(emp, "IT", "06/16/2000");
+        		Parttime parttime = new Parttime(profile, hrlyRate);
+   		        company.add(parttime);
+			    messageArea1.appendText("Employee added!\n");
+    		} else if(eceID.isSelected()) {
+        		Profile profile = new Profile(emp, "ECE", "06/16/2000");
+        		Parttime parttime = new Parttime(profile, hrlyRate);
+   		        company.add(parttime);
+			    messageArea1.appendText("Employee added!\n");
+    		}
+    	}
+    
+
+    		
+    		
     	//}
     	//Show the error message with a pop-up window.
     	//catch (Exception e) {
@@ -125,16 +183,98 @@ public class SampleController {
     
     @FXML
     /**
-     * Event Handler for the remove button
-     * @param event
-     */
+    Event Handler for the add button
+    @param event
+    */
     void remove(ActionEvent event) {
-		String emp = name.getText();
-	
-
-    	
+    	try {
+    		String emp = name.getText();
+			RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
+			String dept = selectDep.getText();
+    		String date = dateHired.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+    		Profile profile = new Profile(emp, dept, date);
+    		Employee employee = new Employee(profile);
+			if(company.remove(employee)) {
+				messageArea1.appendText("Employee removed. \n");
+			}
+			else {
+				if(company.getnumEmployee()==0) { 
+					messageArea1.appendText("Employee database is empty. \n");
+				}
+				else {
+					messageArea1.appendText("Employee does not exist. \n");
+				}
+			}
+    	}
+    	catch (Exception e) {
+    		messageArea1.appendText("Error. \n");
+    	}
     }
     
+    @FXML
+    /**
+    Event Handler for the add button
+    @param event
+    */
+    void calculatePayments(ActionEvent event) {
+    	company.processPayments();
+    	messageArea1.appendText("Calculation of employee payments is done \n");
+    }
+    	
+    @FXML
+    /**
+    Event Handler for the add button
+    @param event
+    */
+    void setHours(ActionEvent event) {
+    	String emp = name.getText();
+		RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
+		String dept = selectDep.getText();
+		String date = dateHired.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+		Profile profile = new Profile(emp, dept, date);
+		String hours = hrsWorked.getText();
+		double hourss = Double.parseDouble(hours);
+		Parttime parttime=new Parttime(profile, 0);
+		parttime.setHours(hourss);
+		if(hourss<0) {
+			messageArea1.appendText("Working hours cannot be negative. \n");
+		}
+		else if(hourss>100) {
+			messageArea1.appendText("Invalid Hours: over 100. \n");
+		}
+		else {
+			if(company.setHours(parttime)) {
+				messageArea1.appendText("Working hours set. \n");
+			} //no print for if employee doesnt exist or isnt parttime
+		}
+    }
+
+    @FXML
+    /**
+    Event Handler for the add button
+    @param event
+    */
+    void print(ActionEvent event) { //either separate or combine like did for add
+    	company.print();
+    }
+    	
+    @FXML
+    /**
+    Event Handler for the add button
+    @param event
+    */
+    void printByDept(ActionEvent event) {
+    	company.printByDepartment();
+    }
+    
+    @FXML
+    /**
+    Event Handler for the add button
+    @param event
+    */
+    void printByDate(ActionEvent event) {
+    	company.printByDate();
+    }
     
     
     
