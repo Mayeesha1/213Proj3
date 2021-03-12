@@ -1,7 +1,5 @@
 package payroll;
 
-
-import java.time.format.DateTimeFormatter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -37,7 +35,16 @@ public class SampleController {
 
     @FXML
     private Button removeButton;
-
+    
+    @FXML
+    private Button printEmp;
+    
+    @FXML
+    private Button printDep;
+    
+    @FXML
+    private Button printDate;
+    
     @FXML
     private Button sethrButton;
     
@@ -236,8 +243,12 @@ public class SampleController {
     @param event
     */
     void calculatePayment(ActionEvent event) {
+    	if(company.getnumEmployee() > 0) {
     	company.processPayments();
     	messageArea2.appendText("Calculation of employee payments is done \n");
+    	} else {
+        messageArea2.appendText("No employees in database.\n");
+    	}
     }
     	
     @FXML
@@ -297,29 +308,53 @@ public class SampleController {
 
     @FXML
     /**
-    Event Handler for the add button
+    Event Handler for the print button
     @param event
     */
-    void print(ActionEvent event) { //either separate or combine like did for add
-    	company.print();
+    String print(ActionEvent event) { 
+    	if(company.getnumEmployee() > 0) {
+        messageArea2.appendText("--Printing earning statements-- \n");
+    	String print = company.print();
+    	messageArea2.appendText(print);
+    	} else {
+        messageArea2.appendText("Employee database is empty. \n");
+    	}
+
+    	return company.print();
     }
     	
     @FXML
     /**
-    Event Handler for the add button
+    Event Handler for the print by dep button
     @param event
     */
-    void printByDept(ActionEvent event) {
-    	company.printByDepartment();
+    String printByDept(ActionEvent event) {
+    	if(company.getnumEmployee() > 0) {
+        messageArea2.appendText("--Printing earning statements by department-- \n");
+    	String printDep = company.printByDepartment();
+    	messageArea2.appendText(printDep);
+    	} else {
+        messageArea2.appendText("Employee database is empty. \n");
+    	}
+
+    	return company.printByDepartment();
     }
     
     @FXML
     /**
-    Event Handler for the add button
+    Event Handler for the print by date button
     @param event
     */
-    void printByDate(ActionEvent event) {
-    	company.printByDate();
+    String printByDate(ActionEvent event) {
+    	if(company.getnumEmployee() > 0) {
+            messageArea2.appendText("--Printing earning statements by date hired-- \n");
+        	String printDate = company.printByDate();
+        	messageArea2.appendText(printDate);
+        	} else {
+            messageArea2.appendText("Employee database is empty.\n");
+        	}
+
+        	return company.printByDate();
     }
     
     

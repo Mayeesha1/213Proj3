@@ -145,18 +145,15 @@ public class Company {
 	/**
 	Method to print the earning statements for all the employers in the company
 	in the normal order from the employee list
-	 */
-	public void print() {
-		if(numEmployee>0) {
-			System.out.println("--Printing earning statements for all employees--");
-			for(int i=0;i<numEmployee;i++) {
-				System.out.println(emplist[i].toString());
+	*/
+	public String print() {
+			String result="";
+			for(int i=0; i<numEmployee; i++) {
+				result=result + emplist[i].toString() + "\n"; //**make sure its part/full toString not just employee
 			}
-		}
-		else {
-			System.out.println("Employee database is empty.");
-		}
+			return result;
 	} 
+	
 	
 	/**
 	Getter method for numEmployee of the company class so it can be used in 
@@ -170,19 +167,16 @@ public class Company {
 	/**
 	Method to print the earning statements for all the employers in the company
 	by the order of their Department from the employee list
-	 */
-	public void printByDepartment() { 
-		if(numEmployee>0) {
-			System.out.println("--Printing earning statements by department--");		
+	*/
+	public String printByDepartment() { 
 			mergeSortDept(emplist,0,numEmployee-1);
+			String result="";
 			for(int i=0; i<numEmployee; i++) {
-				System.out.println(emplist[i].toString());
+				result=result + "\n" + emplist[i].toString();
 			}
-		}
-		else {
-			System.out.println("Employee database is empty.");
-		}
+			return result;
 	}
+
 	
 	/**
 	Helper method to merge sort the employees in order of department
@@ -247,20 +241,15 @@ public class Company {
 	/**
 	Method to print the earning statements for all the employers in the company
 	by the order of date from the employee list
-	 */
-	public void printByDate() { 
-		if(numEmployee>0) {
-			System.out.println("--Printing earning statements by date hired--");
-			
+	*/
+	public String printByDate() { //print the list of books by datePublished (ascending)		
 			mergeSortDate(emplist,0,numEmployee-1);
+			String result="";
 			for(int i=0;i<numEmployee;i++) {
-				System.out.println(emplist[i].toString());
+				result=result + "\n" + emplist[i].toString();
 			}
-		}
-		else {
-			System.out.println("Employee database is empty.");
-		}
-	} 
+			return result;
+	}
 	
 	/**
 	Helper method to merge sort the employees in order of dates hired

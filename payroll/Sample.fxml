@@ -53,15 +53,17 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text layoutX="114.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT COMMAND FROM THE MENU" wrappingWidth="337.99017333984375">
+                        <Text layoutX="131.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT COMMAND FROM THE MENU" wrappingWidth="337.99017333984375">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
                         <Button layoutX="77.0" layoutY="117.0" mnemonicParsing="false" text="FILE" />
-                        <Button layoutX="234.0" layoutY="117.0" mnemonicParsing="false" text="PRINT" />
-                        <Button layoutX="402.0" layoutY="117.0" mnemonicParsing="false" onAction="#calculatePayment" text="PAYMENT" />
+                        <Button fx:id="printEmp" layoutX="198.0" layoutY="91.0" mnemonicParsing="false" onAction="#print" text="PRINT EMPLOYEES" />
+                        <Button fx:id="paymentCalc" layoutX="415.0" layoutY="117.0" mnemonicParsing="false" onAction="#calculatePayment" text="CALCULATE " />
                         <TextArea fx:id="messageArea2" layoutX="-2.0" layoutY="285.0" prefHeight="287.0" prefWidth="606.0" />
+                        <Button fx:id="printDep" layoutX="211.0" layoutY="158.0" mnemonicParsing="false" onAction="#printByDept" text="PRINT BY DEP" />
+                        <Button fx:id="printDate" layoutX="207.0" layoutY="234.0" mnemonicParsing="false" onAction="#printByDate" text="PRINT BY DATE" />
                      </children>
                   </AnchorPane>
             </content>
