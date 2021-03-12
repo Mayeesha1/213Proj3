@@ -13,7 +13,7 @@ import javafx.scene.control.ToggleGroup;
 
 public class SampleController {
 	Company company = new Company();
-
+	private String depart;
     @FXML
     private TextField name;
 
@@ -51,27 +51,44 @@ public class SampleController {
     private ToggleGroup dep, empType, mgmtType;
     
     @FXML
+    private RadioButton csID, itID, eceID, FullTimeID, PartTimeID, ManagementID;
+    
+    @FXML
     /**
      * Event Handler for the add button
      * @param event
      */
     void add(ActionEvent event) {
     	//messageArea.clear(); //clear the TextArea.
-    	try {
-    		String emp = name.getText();
-    		RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
-    		String dept = selectDep.getText();
-    		String date = dateHired.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-    		Profile profile = new Profile(emp, dept, date);
+    	//try {
+		String emp = name.getText();
+		//String date = dateHired.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+
+		System.out.println();
+    	if(csID.isSelected()) {
+    		Profile profile = new Profile(emp, "CS", "06/16/2000");
+    		
+    		
+    	}
+    		//RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
+    		//String dept = selectDep.getText();
+    		//System.out.println(dept);
+		    Profile profile = new Profile(emp, "CS", "06/16/2000");
+
+
+
+    		
     		//Employee employee = new Employee(profile);
     		
-    		RadioButton selectEmp = (RadioButton) empType.getSelectedToggle();
-    		String employeeType = selectEmp.getText();
+    		//RadioButton selectEmp = (RadioButton) empType.getSelectedToggle();
+    		String employeeType = "Full Time";/*selectEmp.getText();*/
     		if(employeeType.equals("Full Time")) {
+    	    	System.out.println("IM IN FULLTIME");
     			String annualSal = annSal.getText();
 				double annSalary = Double.parseDouble(annualSal);
 				Fulltime fulltime = new Fulltime(profile, annSalary);
         		company.add(fulltime);
+				messageArea1.appendText("Employee added!");
 
     		} else if (employeeType.contentEquals("Management")) {
     			String annualSal = annSal.getText();
@@ -99,11 +116,35 @@ public class SampleController {
     		} else if (employeeType.contentEquals("Parttime")) {
 			
     		}
-    	}
+    	//}
     	//Show the error message with a pop-up window.
-    	catch (Exception e) {
-			messageArea1.appendText("Error.\n");
-    	}
+    	//catch (Exception e) {
+			//messageArea1.appendText("Error.\n");
+    	//}
     }
+    
+    @FXML
+    /**
+     * Event Handler for the remove button
+     * @param event
+     */
+    void remove(ActionEvent event) {
+		String emp = name.getText();
+	
 
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

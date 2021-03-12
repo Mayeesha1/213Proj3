@@ -8,6 +8,7 @@ and each employee has their own profile and payment.
 public class Employee {
 	private Profile profile; 
 	private double payment;
+	private String department;
 
 	/**
 	This constructor uses the Profile of an employee to connect the information 
@@ -41,7 +42,7 @@ public class Employee {
 	public void setPayment(double payment) {
 		this.payment=payment;
 	}
-	
+
 	/**
 	Getter method for the payment of an employee it can be used in other classes.
 	@return payment of an employee
