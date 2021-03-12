@@ -60,10 +60,8 @@ public class SampleController {
      * @param event
      */
     void add(ActionEvent event) {
-    	//messageArea.clear(); //clear the TextArea.
-    	//try {
+    	try {
 		String emp = name.getText();
-		//String date = dateHired.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 		String[] dateSplit = dateHired.getValue().toString().split("-");
         String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
         
@@ -76,6 +74,7 @@ public class SampleController {
     			 Fulltime fulltime = new Fulltime(profile, annSalary);
     		     company.add(fulltime);
 			     messageArea1.appendText("Employee added!\n");
+			     System.out.println(company.getnumEmployee());
     		} else if(itID.isSelected()) {
         		Profile profile = new Profile(emp, "IT", formattedDate);
         		Fulltime fulltime = new Fulltime(profile, annSalary);
@@ -172,45 +171,62 @@ public class SampleController {
 			    messageArea1.appendText("Employee added!\n");
     		}
     	  }
-        
-
-    		
-    		
-    	//}
-    	//Show the error message with a pop-up window.
-    	//catch (Exception e) {
-			//messageArea1.appendText("Error.\n");
-    	//}
+        }
+    	catch (Exception e) {
+		messageArea1.appendText("Error.\n");
+    	}
     }
     
     @FXML
     /**
-    Event Handler for the add button
+    Event Handler for the remove button
     @param event
     */
     void remove(ActionEvent event) {
+		System.out.println("Im in Remove!");
     	try {
+    		System.out.println("Im in Remove!");
     		String emp = name.getText();
-			RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
-			String dept = selectDep.getText();
-    		String date = dateHired.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-    		Profile profile = new Profile(emp, dept, date);
-    		Employee employee = new Employee(profile);
-			if(company.remove(employee)) {
+    		String[] dateSplit = dateHired.getValue().toString().split("-");
+            String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
+          if(csID.isSelected()) {
+            Profile profile = new Profile(emp, "CS", formattedDate);
+        	Employee employee = new Employee(profile);
+        	if(company.remove(employee)) {
 				messageArea1.appendText("Employee removed. \n");
 			}
-			else {
-				if(company.getnumEmployee()==0) { 
-					messageArea1.appendText("Employee database is empty. \n");
-				}
-				else {
-					messageArea1.appendText("Employee does not exist. \n");
-				}
+			else if(company.getnumEmployee()==0) { 
+				messageArea1.appendText("Employee database is empty. \n");
+		  } else {
+				messageArea1.appendText("Employee does not exist. \n");
+		  }
+   		} else if(itID.isSelected()) {
+   			Profile profile = new Profile(emp, "IT", formattedDate);
+    		Employee employee = new Employee(profile);
+    		if(company.remove(employee)) {
+				messageArea1.appendText("Employee removed. \n");
 			}
-    	}
+			else if(company.getnumEmployee()==0) { 
+			    messageArea1.appendText("Employee database is empty. \n");
+		  } else {
+			    messageArea1.appendText("Employee does not exist. \n");
+		  }
+   		} else if(eceID.isSelected()) {
+   			Profile profile = new Profile(emp, "ECE", formattedDate);
+    		Employee employee = new Employee(profile);
+    		  if(company.remove(employee)) {
+				messageArea1.appendText("Employee removed. \n");
+			  }
+			  else if(company.getnumEmployee()==0) { 
+			    messageArea1.appendText("Employee database is empty. \n");
+		    } else {
+			    messageArea1.appendText("Employee does not exist. \n");
+			}
+   		  }
+        }
     	catch (Exception e) {
     		messageArea1.appendText("Error. \n");
-    	}
+      }
     }
     
     @FXML
