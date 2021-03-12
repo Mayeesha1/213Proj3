@@ -40,7 +40,10 @@ public class SampleController {
 
     @FXML
     private Button sethrButton;
-
+    
+    @FXML
+    private Button paymentCalc;
+    
     @FXML
     private TextArea messageArea1;
 
@@ -183,9 +186,7 @@ public class SampleController {
     @param event
     */
     void remove(ActionEvent event) {
-		System.out.println("Im in Remove!");
     	try {
-    		System.out.println("Im in Remove!");
     		String emp = name.getText();
     		String[] dateSplit = dateHired.getValue().toString().split("-");
             String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
@@ -234,9 +235,9 @@ public class SampleController {
     Event Handler for the add button
     @param event
     */
-    void calculatePayments(ActionEvent event) {
+    void calculatePayment(ActionEvent event) {
     	company.processPayments();
-    	messageArea1.appendText("Calculation of employee payments is done \n");
+    	messageArea2.appendText("Calculation of employee payments is done \n");
     }
     	
     @FXML
@@ -246,25 +247,52 @@ public class SampleController {
     */
     void setHours(ActionEvent event) {
     	String emp = name.getText();
-		RadioButton selectDep = (RadioButton) dep.getSelectedToggle();
-		String dept = selectDep.getText();
-		String date = dateHired.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-		Profile profile = new Profile(emp, dept, date);
+    	String[] dateSplit = dateHired.getValue().toString().split("-");
+        String formattedDate = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0];
 		String hours = hrsWorked.getText();
 		double hourss = Double.parseDouble(hours);
-		Parttime parttime=new Parttime(profile, 0);
-		parttime.setHours(hourss);
-		if(hourss<0) {
-			messageArea1.appendText("Working hours cannot be negative. \n");
-		}
-		else if(hourss>100) {
-			messageArea1.appendText("Invalid Hours: over 100. \n");
-		}
-		else {
-			if(company.setHours(parttime)) {
-				messageArea1.appendText("Working hours set. \n");
-			} //no print for if employee doesnt exist or isnt parttime
-		}
+		if(PartTimeID.isSelected()) {
+			  if(csID.isSelected()) {
+	    			 Profile profile = new Profile(emp, "CS", formattedDate);
+	    			 Parttime parttime=new Parttime(profile, 0);
+	    		     parttime.setHours(hourss);
+	    		     if(hourss<0) {
+	    				messageArea1.appendText("Working hours cannot be negative. \n");
+	    			 }
+	    			 else if(hourss>100) {
+	    				messageArea1.appendText("Invalid Hours: over 100. \n");
+	    			 }
+	    			 else if(company.setHours(parttime)) {
+	    				messageArea1.appendText("Working hours set. \n");
+	    			 } 
+	    		} else if(itID.isSelected()) {
+	    			Profile profile = new Profile(emp, "IT", formattedDate);
+	    			Parttime parttime=new Parttime(profile, 0);
+	    		    parttime.setHours(hourss);
+	    		    if(hourss<0) {
+	    				messageArea1.appendText("Working hours cannot be negative. \n");
+	    			}
+	    			else if(hourss>100) {
+	    				messageArea1.appendText("Invalid Hours: over 100. \n");
+	    			}
+	    			else if(company.setHours(parttime)) {
+	    				messageArea1.appendText("Working hours set. \n");
+	    			}
+	    		} else if(eceID.isSelected()) {
+	    			Profile profile = new Profile(emp, "ECE", formattedDate);
+	    			Parttime parttime=new Parttime(profile, 0);
+	    		    parttime.setHours(hourss);
+	    		    if(hourss<0) {
+	    				messageArea1.appendText("Working hours cannot be negative. \n");
+	    			}
+	    			else if(hourss>100) {
+	    				messageArea1.appendText("Invalid Hours: over 100. \n");
+	    			}
+	    			else if(company.setHours(parttime)) {
+	    				messageArea1.appendText("Working hours set. \n");
+	    	}
+	     }
+	   }
     }
 
     @FXML

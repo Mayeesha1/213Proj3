@@ -8,7 +8,6 @@ and each employee has their own profile and payment.
 public class Employee {
 	private Profile profile; 
 	private double payment;
-	private String department;
 
 	/**
 	This constructor uses the Profile of an employee to connect the information 

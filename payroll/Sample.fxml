@@ -42,7 +42,7 @@
                         <Button fx:id="clearButton" layoutX="25.0" layoutY="387.0" mnemonicParsing="false" text="Clear" />
                         <Button fx:id="addButton" layoutX="114.0" layoutY="386.0" mnemonicParsing="false" onAction="#add" text="Add Employee" />
                         <Button fx:id="removeButton" layoutX="266.0" layoutY="386.0" mnemonicParsing="false" onAction="#remove" text="Remove Employee" />
-                        <Button fx:id="sethrButton" layoutX="455.0" layoutY="386.0" mnemonicParsing="false" text="Set Hours" />
+                        <Button fx:id="sethrButton" layoutX="455.0" layoutY="386.0" mnemonicParsing="false" onAction="#setHours" text="Set Hours" />
                         <TextArea fx:id="messageArea1" layoutX="-1.0" layoutY="448.0" prefHeight="200.0" prefWidth="600.0" />
                         <DatePicker fx:id="dateHired" layoutX="199.0" layoutY="132.0" prefHeight="25.0" prefWidth="218.0" />
                      </children>
@@ -60,7 +60,7 @@
                         </Text>
                         <Button layoutX="77.0" layoutY="117.0" mnemonicParsing="false" text="FILE" />
                         <Button layoutX="234.0" layoutY="117.0" mnemonicParsing="false" text="PRINT" />
-                        <Button layoutX="402.0" layoutY="117.0" mnemonicParsing="false" text="PAYMENT" />
+                        <Button layoutX="402.0" layoutY="117.0" mnemonicParsing="false" onAction="#calculatePayment" text="PAYMENT" />
                         <TextArea fx:id="messageArea2" layoutX="-2.0" layoutY="285.0" prefHeight="287.0" prefWidth="606.0" />
                      </children>
                   </AnchorPane>
