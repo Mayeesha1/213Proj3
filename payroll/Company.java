@@ -148,6 +148,7 @@ public class Company {
 	/**
 	Method to print the earning statements for all the employers in the company
 	in the normal order from the employee list
+	@return result
 	*/
 	public String print() {
 			String result="";
@@ -170,6 +171,7 @@ public class Company {
 	/**
 	Method to print the earning statements for all the employers in the company
 	by the order of their Department from the employee list
+	@return result
 	*/
 	public String printByDepartment() { 
 			mergeSortDept(emplist,0,numEmployee-1);
@@ -244,6 +246,7 @@ public class Company {
 	/**
 	Method to print the earning statements for all the employers in the company
 	by the order of date from the employee list
+	@return result
 	*/
 	public String printByDate() { //print the list of books by datePublished (ascending)		
 			mergeSortDate(emplist,0,numEmployee-1);

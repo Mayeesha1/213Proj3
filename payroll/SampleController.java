@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
@@ -17,7 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-
+/**
+This class is the main connection to the JavaFX GUI application. The methods written here are to make 
+the buttons functional. Employees are added, removed, hours set, printed, payment calculated, imported,
+and exported through several GUI buttons. 
+@author mayeesha, rebecca
+*/
 public class SampleController {
 	Company company = new Company();
 	
@@ -183,45 +187,7 @@ public class SampleController {
     		messageArea1.appendText("Error. \n");
       }
     }
-    
-    @FXML
-    /**
-    Mouse Event Handler for disabling certain buttons when
-    Part Time is selected
-    @param event
-    */
-    void partClick(MouseEvent event) {
-		annSal.setEditable(false);
-		managerID.setDisable(true);   
-		depheadID.setDisable(true); 
-		directorID.setDisable(true);
-    }
-    
-    @FXML
-    /**
-    Mouse Event Handler for disabling certain buttons when
-    Full Time is selected
-    @param event
-    */
-    void fullClick(MouseEvent event) {
-		hrsWorked.setEditable(false);
-		rate.setEditable(false);
-		managerID.setDisable(true);   
-		depheadID.setDisable(true); 
-		directorID.setDisable(true);
-    }
-    
-    @FXML
-    /**
-    Mouse Event Handler for disabling certain buttons when
-    Management is selected
-    @param event
-    */
-    void mgmtClick(MouseEvent event) {
-    	hrsWorked.setEditable(false);
-		rate.setEditable(false);
-    }
-    
+   
     @FXML
     /**
     Event Handler for the calculate button
