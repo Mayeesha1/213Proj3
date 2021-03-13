@@ -13,6 +13,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -91,14 +92,17 @@ public class SampleController {
 		Profile profile = new Profile(emp, dept, formattedDate);		
 		RadioButton selectEmp = (RadioButton) empType.getSelectedToggle();
 		String employeeType = selectEmp.getText();
-		
+	
 	    if(dateObj.isValid()) { 	
 		 if(employeeType.equals("Full Time")) {
 			String annualSal = annSal.getText();
 			double annSalary = Double.parseDouble(annualSal);
 			Fulltime fulltime = new Fulltime(profile, annSalary);
-    		company.add(fulltime);
+    		if(company.add(fulltime)) {
     		messageArea1.appendText("Employee added! \n");
+    		} else {
+			messageArea1.appendText("Employee already exists! \n");		
+    		}
 
 		 } else if (employeeType.contentEquals("Management")) {
 		    String annualSal = annSal.getText();
@@ -109,36 +113,47 @@ public class SampleController {
     		 if(mgmtRole.contentEquals("Manager")) {
     			Management management = new Management(profile, annSalary, mgmtRole);
 				management.setRole("Manager");
-				company.add(management);
+				if(company.add(management)) {
 				messageArea1.appendText("Employee added! \n");
-
+				} else {
+				messageArea1.appendText("Employee already exists! \n");	
+				}
     		}else if(mgmtRole.contentEquals("Department Head")) {
 				Management management = new Management(profile, annSalary, mgmtRole);
 				management.setRole("Department Head");
-				company.add(management);
+				if(company.add(management)) {
 				messageArea1.appendText("Employee added! \n");
+				} else {
+				messageArea1.appendText("Employee already exists! \n");	
+				}
 
     		}else if(mgmtRole.contentEquals("Director")) {
 				Management management = new Management(profile, annSalary, mgmtRole);
 				management.setRole("Director");
-				company.add(management);
+				if(company.add(management)) {
 				messageArea1.appendText("Employee added! \n");
+				} else {
+				messageArea1.appendText("Employee already exists! \n");	
+				}
     		}
 
 		 } else if (employeeType.contentEquals("Part Time")) {
 			String ratePHour = rate.getText();
 			double ratePerHour = Double.parseDouble(ratePHour);
 			Parttime parttime = new Parttime(profile, ratePerHour);
-			company.add(parttime);
+			if(company.add(parttime)) {
 			messageArea1.appendText("Employee added! \n");
+			} else {
+			messageArea1.appendText("Employee already exists! \n");	
 		   }
+		  }
 	     } else {
 		    messageArea1.appendText("Invalid Date! \n");
-	     }
+	    }
        }
     	catch (Exception e) {
 		messageArea1.appendText("Error. Please recheck inputs! \n");
-     }
+    }
    }
     
     @FXML
@@ -167,6 +182,44 @@ public class SampleController {
     	catch (Exception e) {
     		messageArea1.appendText("Error. \n");
       }
+    }
+    
+    @FXML
+    /**
+    Mouse Event Handler for disabling certain buttons when
+    Part Time is selected
+    @param event
+    */
+    void partClick(MouseEvent event) {
+		annSal.setEditable(false);
+		managerID.setDisable(true);   
+		depheadID.setDisable(true); 
+		directorID.setDisable(true);
+    }
+    
+    @FXML
+    /**
+    Mouse Event Handler for disabling certain buttons when
+    Full Time is selected
+    @param event
+    */
+    void fullClick(MouseEvent event) {
+		hrsWorked.setEditable(false);
+		rate.setEditable(false);
+		managerID.setDisable(true);   
+		depheadID.setDisable(true); 
+		directorID.setDisable(true);
+    }
+    
+    @FXML
+    /**
+    Mouse Event Handler for disabling certain buttons when
+    Management is selected
+    @param event
+    */
+    void mgmtClick(MouseEvent event) {
+    	hrsWorked.setEditable(false);
+		rate.setEditable(false);
     }
     
     @FXML
