@@ -335,35 +335,27 @@ public class SampleController {
     	}
     }
     
+    @FXML
     /**
     The method exports the database from the file.
     @param event
     */
-    void exportFile (ActionEvent event) {
-    	FileChooser chooser = new FileChooser();
-    	chooser.setTitle("Export File");
-    	chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
-    			new ExtensionFilter("All Files", "*.*"));
-    	Stage stage = new Stage();
-    	//try {
+    void exportFile(ActionEvent event) {
+    	try {
+    		FileChooser chooser = new FileChooser();
+    		chooser.setTitle("Export File");
+    		chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
+    				new ExtensionFilter("All Files", "*.*"));
+    		Stage stage = new Stage();
     		File file = chooser.showSaveDialog(stage);
     		String filePath = file.getAbsolutePath();
     		String fileName = file.getName();
     		company.exportDatabase(filePath);
-    		/*if(!TextAreaID.getText().isEmpty()) {
-    			messageArea1.append("\n");
-    		}
-    		messageArea1.append("File exported.");
-    		TextAreaID.setText(messageArea1.toString());
+    		messageArea2.appendText("File exported. \n");
     	}
-    	catch (NullPointerException e) {
-    		if(!TextAreaID.getText().isEmpty()) {
-    			messageArea1.append("\n");
-    		}
-    		messageArea1.append("No file was selected.");
-    		TextAreaID.setText(messageArea1.toString());
-    	}*/
-      }
-    
+    	catch (Exception e) {
+    		messageArea2.appendText("Error. \n");
+    	}
+    }
    
 }

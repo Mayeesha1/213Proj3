@@ -73,7 +73,7 @@
                         <Button fx:id="printDep" layoutX="211.0" layoutY="158.0" mnemonicParsing="false" onAction="#printByDept" text="PRINT BY DEP" />
                         <Button fx:id="printDate" layoutX="207.0" layoutY="234.0" mnemonicParsing="false" onAction="#printByDate" text="PRINT BY DATE" />
                         <Button fx:id="importButton" layoutX="52.0" layoutY="117.0" mnemonicParsing="false" onAction="#importFile" text="IMPORT" />
-                        <Button fx:id="exportButton" layoutX="52.0" layoutY="200.0" mnemonicParsing="false" text="EXPORT" />
+                        <Button fx:id="exportButton" layoutX="52.0" layoutY="200.0" mnemonicParsing="false" onAction="#exportFile" text="EXPORT" />
                      </children>
                   </AnchorPane>
             </content>

@@ -89,5 +89,5 @@ public class Parttime extends Employee {
 		DecimalFormat df=new DecimalFormat(pattern);
 		return super.toString() + "::Payment $" + df.format(getPayment()) + "::PART TIME::Hourly Rate $" 
 				+ df.format(hourlyRate) + "::Hours worked this period: " + hours;
-	} 
+	}  
 }

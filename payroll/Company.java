@@ -329,14 +329,23 @@ public class Company {
 		try {
 			FileWriter write = new FileWriter(path);
 			BufferedWriter writer = new BufferedWriter(write);
-			writer.write(emplist[0].toString());
-			for(int i = 1; i < numEmployee; i++) {
-				writer.append(emplist[i].toString() + "\n"); //**make sure its part/full toString not just employee
-			}
+			for (int i = 0; i < numEmployee; i++) {
+					if (emplist[i] instanceof Management) {
+						Management management = (Management) emplist[i];
+						writer.append(management.toString() + "\n");
+					  }
+					else if (emplist[i] instanceof Fulltime){
+						Fulltime fulltime = (Fulltime) emplist[i];
+						writer.append(fulltime.toString() + "\n");
+					} else { //parttime
+					Parttime parttime = (Parttime) emplist[i];
+					writer.append(parttime.toString() + "\n");
+				}
+		    }
 			writer.close();
 		}
 		catch (IOException e) {
-		}
-	}
-	
+	 }
+   }
+		
 }
