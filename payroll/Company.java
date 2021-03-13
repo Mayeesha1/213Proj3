@@ -1,5 +1,8 @@
 package payroll;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
 The company class stores all the employees in an array-based list. These employees can 
@@ -315,6 +318,24 @@ public class Company {
 				emplist[k]=rightEmployee[rightIndex];
 				rightIndex++;
 			}
+		}
+	}
+	
+	/**
+	The method exports the database of employees to a path.
+	@param path
+	 */
+	public void exportDatabase(String path) {
+		try {
+			FileWriter write = new FileWriter(path);
+			BufferedWriter writer = new BufferedWriter(write);
+			writer.write(emplist[0].toString());
+			for(int i = 1; i < numEmployee; i++) {
+				writer.append(emplist[i].toString() + "\n"); //**make sure its part/full toString not just employee
+			}
+			writer.close();
+		}
+		catch (IOException e) {
 		}
 	}
 	
